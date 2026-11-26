@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dublin Pubgolf</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#fff3d1;--card:#fffdf5;--ink:#1d2b24;--mute:#5d6b62;--green:#2e8b57;--pink:#ff6f91;--gold:#ffc93c;--sky:#8fd8ee;--bub:#fff3d1;--sh:#1d2b24;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13211a;--card:#1d2d24;--ink:#fbf3d8;--mute:#a9b9ad;--bub:#fff3d1;--sh:#000}}
+:root[data-theme="dark"]{--bg:#13211a;--card:#1d2d24;--ink:#fbf3d8;--mute:#a9b9ad;--bub:#fff3d1;--sh:#000}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.4 "Fredoka","Trebuchet MS",system-ui,sans-serif}
+.hero{max-width:760px;margin:auto;padding:12px 12px 0}
+.hero svg{width:100%;height:auto;display:block;border:3px solid var(--sh);border-radius:22px;box-shadow:5px 5px 0 var(--sh)}
+h1{font-size:34px;line-height:1.05;margin:16px 14px 2px;letter-spacing:.5px}
+h1 span{color:var(--pink)}
+.sub{margin:0 14px 10px;color:var(--mute)}
+nav{display:flex;gap:8px;max-width:760px;margin:12px auto;padding:0 12px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+nav button{flex:1;padding:10px 4px;border:3px solid var(--sh);background:var(--card);color:var(--ink);border-radius:14px;font:inherit;font-weight:600;cursor:pointer;box-shadow:3px 3px 0 var(--sh)}
+nav button.on{background:var(--gold);color:#1d2b24;transform:translate(2px,2px);box-shadow:1px 1px 0 var(--sh)}
+main{max-width:760px;margin:auto;padding:0 12px 50px}
+.hole{display:flex;gap:12px;align-items:center;background:var(--card);border:3px solid var(--sh);border-radius:20px;padding:12px;margin-bottom:14px;box-shadow:4px 4px 0 var(--sh)}
+.hole:nth-child(3n+1){--a:var(--pink)}.hole:nth-child(3n+2){--a:var(--sky)}.hole:nth-child(3n){--a:var(--gold)}
+.bub{flex:none;width:84px;height:96px;background:var(--bub);border:3px solid var(--sh);border-radius:50% 50% 24px 24px;display:flex;align-items:flex-end;justify-content:center;position:relative}
+.bub svg{width:64px;height:80px}
+.flag{position:absolute;top:-12px;left:-10px;background:var(--a);color:#1d2b24;border:3px solid var(--sh);border-radius:50%;width:38px;height:38px;display:grid;place-items:center;font-weight:700}
+.hole:hover .bub svg{animation:wob .6s ease-in-out}
+@keyframes wob{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+@media (prefers-reduced-motion:reduce){.hole:hover .bub svg{animation:none}}
+.t{flex:1;min-width:0}.t b{font-size:19px;display:block}.t .d{font-weight:500}
+.area{color:var(--mute);font-size:14px}
+.par{display:inline-flex;gap:3px;align-items:center;margin-top:4px;background:var(--a);color:#1d2b24;border:2px solid var(--sh);border-radius:99px;padding:1px 10px 1px 8px;font-weight:700;font-size:14px}
+.par i{width:10px;height:10px;background:#fff;border:2px solid #1d2b24;border-radius:50%;display:inline-block}
+.rule{margin:8px 0 0;font-size:14px;background:var(--bub);color:#1d2b24;border-radius:12px;padding:6px 10px}
+.t a{color:var(--green);font-weight:600;font-size:14px;text-decoration:none}
+.card{background:var(--card);border:3px solid var(--sh);border-radius:20px;padding:14px;margin-bottom:14px;box-shadow:4px 4px 0 var(--sh)}
+.card h2{margin:0 0 6px;font-size:22px}ul{padding-left:20px;margin:6px 0}li{margin:5px 0}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:6px;border-bottom:2px dashed var(--mute);text-align:center;white-space:nowrap}
+td:first-child,th:first-child{text-align:left}th small{display:block;font-weight:500;color:var(--mute)}
+td .d{font-size:12px;color:var(--mute)}
+input{width:46px;padding:6px 2px;text-align:center;font:inherit;border:2px solid var(--sh);border-radius:10px;background:var(--bub);color:#1d2b24}
+tfoot td{font-weight:700;border:0}.under{color:var(--green)}.over{color:var(--pink)}
+.lead{background:var(--gold);color:#1d2b24;border-radius:8px}
+button.sm{padding:8px 14px;border:3px solid var(--sh);background:var(--card);color:var(--ink);border-radius:12px;font:inherit;font-weight:600;cursor:pointer}
+details{margin-top:6px}summary{cursor:pointer;font-weight:600;color:#2e8b57}.hide{display:none}.note{color:var(--mute);font-size:14px}
+</style>
+</head>
+<body>
+<div class="hero"><svg viewBox="0 0 400 190" role="img" aria-label="Golfvlag, bal en een pint op een groene heuvel">
+<rect width="400" height="190" fill="#8fd8ee"/>
+<circle cx="335" cy="42" r="24" fill="#ffc93c" stroke="#1d2b24" stroke-width="3"/>
+<g fill="#fff" stroke="#1d2b24" stroke-width="3"><path d="M40 64c-10 0-14-14-4-18 2-10 18-10 22-2 10-2 16 12 6 18z"/><path d="M250 40c-9 0-12-12-3-15 2-9 16-9 19-2 9-2 14 10 5 17z"/></g>
+<path d="M0 150c60-50 130-60 210-30 70 26 130 10 190-20v90H0z" fill="#59c27f" stroke="#1d2b24" stroke-width="3"/>
+<path d="M0 175c80-30 160-20 230-5 60 12 120 8 170-10v30H0z" fill="#2e8b57" stroke="#1d2b24" stroke-width="3"/>
+<ellipse cx="120" cy="150" rx="26" ry="7" fill="#1d2b24"/>
+<line x1="120" y1="148" x2="120" y2="70" stroke="#1d2b24" stroke-width="4" stroke-linecap="round"/>
+<path d="M122 72l42 14-42 14z" fill="#ff6f91" stroke="#1d2b24" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="168" cy="152" r="11" fill="#fff" stroke="#1d2b24" stroke-width="3"/><circle cx="165" cy="149" r="1.6" fill="#1d2b24"/><circle cx="171" cy="153" r="1.6" fill="#1d2b24"/><circle cx="164" cy="156" r="1.6" fill="#1d2b24"/>
+<g transform="translate(262 56) scale(1.5)"><path d="M14 16h36l-5 56a4 4 0 0 1-4 4H23a4 4 0 0 1-4-4z" fill="#2b1a10" stroke="#1d2b24" stroke-width="3" stroke-linejoin="round"/><path d="M14 22c-3-9 6-14 12-10 3-6 13-5 14 3 7-2 12 4 10 10z" fill="#fffaf0" stroke="#1d2b24" stroke-width="3" stroke-linejoin="round"/><circle cx="30" cy="46" r="3" fill="#fff" opacity=".6"/></g>
+<path d="M300 60l5 8M312 54l4 9M324 58l5 8" stroke="#1d2b24" stroke-width="3" stroke-linecap="round" opacity=".0"/>
+</svg></div>
+<h1>Dublin <span>Pubgolf</span> ⛳</h1>
+<p class="sub">12 kroegen · 16 holes · 4 teams · minste slokken wint</p>
+<nav><button data-t="holes" class="on">🍺 Holes</button><button data-t="card">📋 Scorekaart</button><button data-t="rules">📜 Regels</button></nav>
+<main>
+<section id="holes"></section>
+<section id="card" class="hide"><div class="card"><h2>Scorekaart</h2><p class="note">Vul in hoeveel slokken elk team per hole nam. Straffen tellen als extra slokken. Scores worden alleen op dit apparaat bewaard.</p><div class="wrap"><table id="tbl"></table></div><p><button class="sm" id="reset">Wis alle scores</button></p></div></section>
+<section id="rules" class="hide"></section>
+</main>
+<script>
+function ic(n,d,bands,extra){return '<svg viewBox="0 0 64 80" aria-hidden="true"><defs><clipPath id="c'+n+'"><path d="'+d+'"/></clipPath></defs><path d="'+d+'" fill="#fff" fill-opacity=".6"/><g clip-path="url(#c'+n+')">'+bands.map(function(b){return '<rect x="0" y="'+b[0]+'" width="64" height="'+(80-b[0])+'" fill="'+b[1]+'"/>'}).join("")+'</g><path d="'+d+'" fill="none" stroke="#1d2b24" stroke-width="3" stroke-linejoin="round"/>'+(extra||"")+'</svg>'}
+var K="stroke=\"#1d2b24\" stroke-width=\"3\" stroke-linejoin=\"round\"";
+var G={pint:"M14 16h36l-5 56a4 4 0 0 1-4 4H23a4 4 0 0 1-4-4z",shot:"M20 30h24l-3 42a3 3 0 0 1-3 3H26a3 3 0 0 1-3-3z",tall:"M19 10h26l-3 62a4 4 0 0 1-4 4H26a4 4 0 0 1-4-4z",bottle:"M28 8h8v16c0 6 8 8 8 16v32a4 4 0 0 1-4 4H24a4 4 0 0 1-4-4V40c0-8 8-10 8-16z",pitcher:"M14 14h34l-4 58a4 4 0 0 1-4 4H22a4 4 0 0 1-4-4z"};
+var foam="<path d=\"M13 22c-3-9 6-14 12-10 3-6 13-5 14 3 7-2 12 4 10 10z\" fill=\"#fffaf0\" "+K+"/>";
+var ice="<rect x=\"27\" y=\"30\" width=\"10\" height=\"10\" rx=\"2\" fill=\"#fff\" fill-opacity=\".75\" stroke=\"#1d2b24\" stroke-width=\"2\" transform=\"rotate(12 32 35)\"/><path d=\"M38 8L44 0\" stroke=\"#ff6f91\" stroke-width=\"4\" stroke-linecap=\"round\"/><circle cx=\"22\" cy=\"10\" r=\"7\" fill=\"#9bd84a\" "+K+"/>";
+var lime="<circle cx=\"32\" cy=\"8\" r=\"7\" fill=\"#9bd84a\" "+K+"/><rect x=\"24\" y=\"46\" width=\"16\" height=\"14\" rx=\"3\" fill=\"#fff\" "+K+"/>";
+var bolt="<path d=\"M52 4l-9 15h7l-5 13 13-18h-8z\" fill=\"#ffc93c\" "+K+"/>";
+var handle="<path d=\"M48 26h6a6 6 0 0 1 6 6v12a6 6 0 0 1-6 6h-5\" fill=\"none\" stroke=\"#1d2b24\" stroke-width=\"3\" stroke-linecap=\"round\"/>";
+var DR={
+stout:function(n){return ic(n,G.pint,[[26,"#2b1a10"]],foam)},
+ale:function(n){return ic(n,G.pint,[[26,"#a8431f"]],foam)},
+lager:function(n){return ic(n,G.pint,[[26,"#f2c230"]],foam)},
+cider:function(n){return ic(n,G.pint,[[26,"#e6a62c"]],foam)},
+ipa:function(n){return ic(n,G.pint,[[46,"#d98a1c"]],foam)},
+whiskey:function(n){return ic(n,G.shot,[[44,"#d99a2b"]])},
+tequila:function(n){return ic(n,G.shot,[[44,"#f3e6a8"]])},
+baby:function(n){return ic(n,G.shot,[[40,"#f1e2c2"],[54,"#4a2a14"]])},
+jager:function(n){return ic(n,G.shot,[[42,"#2a1a10"]],bolt)},
+gin:function(n){return ic(n,G.tall,[[24,"#d4f1ec"]],ice)},
+aperol:function(n){return ic(n,G.tall,[[24,"#ff8a3d"]],ice)},
+vred:function(n){return ic(n,G.tall,[[24,"#f0c43a"]],ice)},
+rumcoke:function(n){return ic(n,G.tall,[[24,"#4a2a14"]],ice)},
+ginger:function(n){return ic(n,G.tall,[[24,"#d9a441"]],ice)},
+bottle:function(n){return ic(n,G.bottle,[[30,"#e6b84a"]],lime)},
+pitcher:function(n){return ic(n,G.pitcher,[[24,"#f2c230"]],foam.replace("M13 22","M13 24")+handle)}
+};
+var RULES=[
+"🎯 Split de G in één slok? Dan is het een hole in one en tel je 1 slag.",
+"Drink met je niet-dominante hand. +1 per foutje.",
+"⚡ Power-up race! Eén speler per team drinkt zo snel mogelijk zijn glas leeg. Het snelste team wint een power-up die je één keer naar keuze mag inzetten (zie Regels).",
+"Voetbalnamen! Iedereen kiest een favoriete voetballer en mag tijdens deze hole alleen met die naam worden aangesproken. Echte naam gebruikt? +1.",
+"",
+"Niet op je telefoon kijken! Doe je het toch, dan +1.",
+"✅ Checkpoint! Iedereen drinkt tegelijk, maak daarna een teamfoto en lees de tussenstand voor.",
+"Fles zonder handen. Morsen of laten vallen: +2.",
+"",
+"⏱️ Speedronde! De drinkers worden getimed. De langzaamste krijgt +1.",
+"",
+"",
+"🎲 Dobbelsteen! Elk team gooit een dobbelsteen: 1-2 = slagen ×1, 3-4 = ×2, 5-6 = ×3. Succes!",
+"",
+"Bonus: teamselfie met een vriendelijke vreemdeling. −1 op je volgende hole.",
+"🏁 Finale race! Eén speler per team drinkt zo snel mogelijk. Het snelste team geeft de andere teams +5 slagen."];
+var QUIZ={4:["In welk jaar is Guinness opgericht? De dichtstbijzijnde gok krijgt −1 slag (bij gelijkspel krijgen allen het).","1759"],8:["In welk jaar kwam het album The Joshua Tree van U2 uit? De dichtstbijzijnde gok krijgt −1 slag (bij gelijkspel krijgen allen het).","1987 (9 maart)"],10:["Shout-out voor Pim: bij welke club beëindigde Peter Crouch zijn voetbalcarrière? Elk team dat het goed heeft krijgt −1 slag.","Burnley"],13:["Op welke dag en in welk jaar vond het “leuke selfie kanker dikzak”-incident plaats? De dichtstbijzijnde gok krijgt −1 slag (bij gelijkspel krijgen allen het).","2 februari 2021"],1:["Hoeveel doelpunten maakte NAC Breda in zijn meest scorende seizoen? De dichtstbijzijnde gok krijgt −1 slag (bij gelijkspel krijgen allen het). Wie ook het juiste seizoen weet, krijgt nog eens −1.","94 doelpunten (seizoen 1990/1991)"]};
+var H=[
+["The Lord Edward","Christchurch","Pint Guinness (split de G)",2,"stout"],
+["The Long Hall","George’s St","Pint Smithwick’s Irish Red Ale",2,"ale"],
+["The Long Hall","George’s St","Aperol Spritz",1,"aperol"],
+["The Hairy Lemon","Stephen St","Pint Rockshore Lager",2,"lager"],
+["Hogan’s","Fade St","Gin-tonic (of wodka soda)",1,"gin"],
+["Whelan’s","Wexford St","Pint Orchard Thieves cider",2,"cider"],
+["Whelan’s","Wexford St","Baby Guinness (Kahlúa & Baileys)",1,"baby"],
+["Anseo","Camden St","Flesje Corona / Peroni (zonder handen)",1,"bottle"],
+["Devitt’s Pub","Camden St","Pint Murphy’s of Beamish Stout",2,"stout"],
+["Devitt’s Pub","Camden St","Rum-cola",1,"rumcoke"],
+["Ryan’s of Camden St","Camden St","Pint Heineken",2,"lager"],
+["The Bleeding Horse","Upper Camden","Half pint craft IPA",1,"ipa"],
+["The Bleeding Horse","Upper Camden","Whiskey-gingerale",1,"ginger"],
+["Cassidy’s","Lower Camden","Pint Coors / Carlsberg",2,"lager"],
+["Flannery’s","Camden St","Wodka Red Bull / wodka met mixer",1,"vred"],
+["The Camden","Camden / Harcourt","Laatste pint of een kan huisbier om te delen",2,"pitcher"]];
+var TEAMS=[["Bart & Daan","🦆"],["Lennard & Santi","🐙"],["Tom, Sven & Lucas","🦄"],["Pim & Bas","🐸"]];
+function gm(n){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(n.replace("’","'")+" pub Dublin")}
+function rl(i){var h=RULES[i]?"<p class=\"rule\">🎲 "+RULES[i]+"</p>":"";var q=QUIZ[i];if(q)h+="<div class=\"rule\">🧠 <b>Pubquiz:</b> "+q[0]+" ✍️ Wie wint, mag een extra regel verzinnen die de rest van de avond geldt.<details><summary>Quizmaster: tik voor het antwoord</summary><b>"+q[1]+"</b></details></div>";return h}
+var out="",seen={};
+H.forEach(function(h,i){var first=!seen[h[0]];seen[h[0]]=1;var balls="";for(var k=0;k<h[3];k++)balls+="<i></i>";
+out+="<article class=\"hole\"><div class=\"bub\"><span class=\"flag\">"+(i+1)+"</span>"+DR[h[4]](i)+"</div><div class=\"t\"><b>"+h[0]+"</b><div class=\"area\">"+h[1]+"</div><div class=\"d\">"+h[2]+"</div><span class=\"par\">PAR "+h[3]+" "+balls+"</span>"+
+(first?rl(i)+"<a target=\"_blank\" rel=\"noopener\" href=\""+gm(h[0])+"\">📍 Zoek op Google Maps</a>":rl(i)+"<p class=\"area\">🔁 Zelfde kroeg als de vorige hole. Blijf zitten!</p>")+"</div></article>"});
+document.getElementById("holes").innerHTML=out;
+/* scorecard */
+var SK="pubgolf-dublin-v4",S={};try{S=JSON.parse(localStorage.getItem(SK)||"{}")}catch(e){S={}}
+function save(){try{localStorage.setItem(SK,JSON.stringify(S))}catch(e){}}
+var tbl=document.getElementById("tbl");
+function build(){var h="<thead><tr><th>Hole</th><th>Par</th>"+TEAMS.map(function(t){return "<th>"+t[1]+"<small>"+t[0]+"</small></th>"}).join("")+"</tr></thead><tbody>";
+H.forEach(function(o,i){h+="<tr><td><b>"+(i+1)+"</b> <span class=\"d\">"+o[0]+"</span></td><td>"+o[3]+"</td>";
+TEAMS.forEach(function(t,k){var v=S[k+"_"+i];h+="<td><input type=\"number\" inputmode=\"numeric\" min=\"0\" data-k=\""+k+"_"+i+"\" value=\""+(v===undefined?"":v)+"\" aria-label=\""+t[0]+" hole "+(i+1)+"\"></td>"});h+="</tr>"});
+var par=H.reduce(function(a,o){return a+o[3]},0);
+h+="</tbody><tfoot><tr><td>Totaal</td><td>"+par+"</td>"+TEAMS.map(function(t,k){return "<td id=\"t"+k+"\"></td>"}).join("")+"</tr><tr><td>t.o.v. par</td><td></td>"+TEAMS.map(function(t,k){return "<td id=\"v"+k+"\"></td>"}).join("")+"</tr></tfoot>";
+tbl.innerHTML=h;tot()}
+function tot(){var best=null,vals=[];TEAMS.forEach(function(t,k){var s=0,p=0,n=0;H.forEach(function(o,i){var v=S[k+"_"+i];if(v!==undefined&&v!==""){s+=+v;p+=o[3];n++}});vals.push(n?s:null);
+document.getElementById("t"+k).textContent=n?s:"–";var d=s-p,c=document.getElementById("v"+k);c.textContent=n?(d>0?"+"+d:d):"–";c.className=d<0?"under":d>0?"over":""});
+var m=Math.min.apply(null,vals.filter(function(v){return v!==null}));
+TEAMS.forEach(function(t,k){var c=document.getElementById("t"+k);if(vals[k]!==null&&vals[k]===m&&vals.filter(function(v){return v!==null}).length>1){c.className="lead";c.textContent="🏆 "+vals[k]}else c.className=""})}
+tbl.addEventListener("input",function(e){var k=e.target.getAttribute("data-k");if(!k)return;if(e.target.value==="")delete S[k];else S[k]=e.target.value;save();tot()});
+document.getElementById("reset").onclick=function(){if(confirm("Alle scores wissen?")){S={};save();build()}};
+build();
+/* rules */
+var R="<div class=\"card\"><h2>⛳ Zo werkt het</h2><ul><li>Elk drankje is een hole. Par is het aantal slokken dat je krijgt om het leeg te drinken.</li><li>Je score is het aantal slokken dat je echt neemt. Minder is beter, net als bij golf.</li><li>Per hole drinkt één teamlid. Zijn of haar slokken zijn de score van het team voor die hole. Wissel af, zodat iedereen ongeveer evenveel aan de beurt komt.</li><li>Het team van Tom, Sven en Lucas: op elke hole drinken twee spelers tegelijk, en de beste score telt.</li><li>Het laagste totaal bij The Camden wint de eer (en de trofee).</li></ul></div>";
+R+="<div class=\"card\"><h2>⚡ Power-ups en speciale holes</h2><ul><li><b>Power-up (hole 3):</b> de winnaar van de openingsrace mag hem één keer inzetten, wanneer hij wil: een ander team moet een tweede drankje bestellen. Die slagen tellen voor dat team.</li><li><b>Quizvragen:</b> wie de vraag goed heeft, mag een extra regel verzinnen die de rest van de avond geldt.</li><li><b>Dobbelsteen (hole 13):</b> elk team gooit en vermenigvuldigt zijn slagen voor die hole.</li><li><b>Finale race (hole 16):</b> de winnaars geven de andere teams +5. Een team dat achterstaat kan nog steeds winnen.</li></ul></div>";
+R+="<div class=\"card\"><h2>🎯 Bonussen en straffen</h2><ul><li><b>Morsen:</b> +2 slokken.</li><li><b>Overgeven:</b> +5 slokken.</li><li><b>Regel gebroken:</b> +1 per keer (zie elke kroeg onder het tabblad Holes).</li><li><b>Hole in one:</b> drink een drankje met par 2 in één slok leeg en krijg −1. Split de G bij hole 1 telt ook als hole in one (1 slag).</li><li><b>Selfiebonus:</b> een teamselfie met een vreemdeling bij Flannery’s levert −1 op.</li><li><b>Duel:</b> één keer per team mag je een ander team uitdagen voor een drinkrace op één hole. De verliezer krijgt +1.</li></ul></div>";
+document.getElementById("rules").innerHTML=R;
+document.querySelectorAll("nav button").forEach(function(b){b.onclick=function(){document.querySelectorAll("nav button").forEach(function(x){x.className=x===b?"on":""});["holes","card","rules"].forEach(function(id){document.getElementById(id).className=id===b.getAttribute("data-t")?"":"hide"})}});
+</script>
+</body>
+</html>
